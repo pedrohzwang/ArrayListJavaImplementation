@@ -12,7 +12,11 @@ public class EstruturaDados1 {
         array.add(11);
         array.add(12);
         array.add(13);
-        
-        System.out.print(array.toString());
+        array.add(13);
+        System.out.println(array.size());
+
+        for (int i = 0; i < array.size(); i++) {
+            System.out.println();
+        }
     }
 }
