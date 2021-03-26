@@ -1,8 +1,8 @@
 package structures;
 
-public class ListaComArray {
+public class ListaComArray <T> implements Lista<T>{
 
-    private Integer[] array;
+    private T[] array;
     private boolean resizable;
     private int initialCapacity;
     private int counter;
@@ -19,12 +19,13 @@ public class ListaComArray {
     public ListaComArray(int initialCapacity, boolean resizable) {
         this.initialCapacity = initialCapacity;
         this.resizable = resizable;
-        array = new Integer[initialCapacity];
+        array = (T[]) new Object[initialCapacity];
         X = 1;
         counter = 0;
     }
 
-    public void add(Integer obj) {
+    @Override
+    public void add(T obj) {
         array[counter] = obj;
         counter++;
         
@@ -33,7 +34,8 @@ public class ListaComArray {
         }
     }
 
-    public void add(int index, Integer obj) {
+    @Override
+    public void add(int index, T obj) {
         if(index > array.length || index < 0){
             throw new IndexOutOfBoundsException();
         }
@@ -51,12 +53,13 @@ public class ListaComArray {
     }
 
     private void resizeArrayList() {
-        Integer[] array2 = new Integer[array.length + X];
+        T[] array2 = (T[]) new Object[array.length + X];
         System.arraycopy(array, 0, array2, 0, array.length);
-        array = new Integer[array2.length];
+        array = (T[]) new Object[array2.length];
         System.arraycopy(array2, 0, array, 0, array2.length);
     }
 
+    @Override
     public int size(){
         return counter;
     }
@@ -71,31 +74,36 @@ public class ListaComArray {
         return false;
     }
 
+    @Override
     public boolean isEmpty(){
        return counter == 0;
     }
 
+    @Override
     public void clear(){
-        array = new Integer[initialCapacity];
+        array = (T[]) new Object[initialCapacity];
     }
 
-    public Integer get(int index){
+    @Override
+    public T get(int index){
         if(index > array.length || index < 0){
             throw new IndexOutOfBoundsException();
         }
         return array[index];
     }
 
-    public Integer set(int index, Integer obj){
+    @Override
+    public T set(int index, T obj){
         if(index > array.length || index < 0){
             throw new IndexOutOfBoundsException();
         }
-        Integer old = array[index];
+        T old = array[index];
         array[index] = obj;
         return old;
     }
 
-    public boolean contains(Integer obj){
+    @Override
+    public boolean contains(T obj){
         for(int i = 0; i <= counter; i++){
             if(array[i] == obj){
                 return true;
@@ -104,12 +112,13 @@ public class ListaComArray {
         return false;
     }
 
-    public Integer remove(int index){
+    @Override
+    public T remove(int index){
         if(index > array.length || index < 0){
             throw new IndexOutOfBoundsException();
         }
 
-        Integer elementoRemovido = array[index];
+        T elementoRemovido = array[index];
 
         for (int i = index; i < counter; i++){
             array[i] = array[i + 1];
@@ -118,12 +127,14 @@ public class ListaComArray {
         return elementoRemovido;
     }
 
-    public boolean removeFirst(Integer obj){
+    @Override
+    public boolean removeFirst(T obj){
         this.remove(this.indexOf(obj));
         return false;
     }
 
-    public int indexOf(Integer obj){
+    @Override
+    public int indexOf(T obj){
         if(contains(obj)){
             for(int i = 0; i <= counter; i++){
                 if(array[i] == obj){
@@ -134,9 +145,10 @@ public class ListaComArray {
         return -1;
     }
 
-    public Integer[] toArray(){
+    @Override
+    public T[] toArray(){
         int i2 = 0;
-        Integer[] array2 = new Integer[counter];
+        T[] array2 = (T[]) new Object[counter];
         for (int i = 0; i < array.length; i++){
             if (array[i] != null){
                 array2[i2] = array[i];
@@ -146,7 +158,8 @@ public class ListaComArray {
         return array2;
     }
 
-    public int lastIndexOf(Integer obj){
+    @Override
+    public int lastIndexOf(T obj){
         int ultimaPosicao = -1;
         if(this.contains(obj)){
             for(int i = this.indexOf(obj); i <= counter; i++){

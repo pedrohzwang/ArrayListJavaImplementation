@@ -9,12 +9,12 @@ public class EstruturaDados1 {
         ListaComArray array = new ListaComArray();
         
         array.add(10);
-        array.add(11);
+        array.add(false);
         array.add(12);
         array.add(13);
         array.add(13);
         array.add(9);
-        array.add(13);
+        array.add("Pedro");
         System.out.println(array.size());
         System.out.println(Arrays.toString(array.toArray()));
         System.out.println("\n----------");

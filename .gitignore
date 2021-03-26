@@ -1,3 +1,4 @@
 *.idea/
 out
 ArrayListJavaImplementation.iml
+/bin/
