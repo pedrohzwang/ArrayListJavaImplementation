@@ -1,6 +1,9 @@
 package estruturadados1;
 
 import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
+
 import structures.ListaComArray;
 import structures.ListaComEncadeamento;
 
@@ -28,8 +31,30 @@ public class EstruturaDados1 {
         System.out.println(array.get(2));*/
     	
     	ListaComEncadeamento<Integer> lista = new ListaComEncadeamento<>();
-    	
-    	
-        
+    	lista.add(1);
+    	lista.add(2);
+    	lista.add(3);
+
+    	for (int i = 0; i < lista.size(); i++){
+			System.out.println(lista.get(i));
+		}
+		System.out.println("------------------");
+
+		lista.add(1, 0);
+
+		for (int i = 0; i < lista.size(); i++){
+			System.out.println(lista.get(i));
+		}
+		System.out.println("------------------");
+
+//		lista.clear();
+//		System.out.println(lista == null);
+//		for (int i = 0; i < lista.size(); i++){
+//			System.out.println(lista.get(i));
+//		}
+		System.out.println(lista.remove(1));;
+		for (int i = 0; i < lista.size(); i++){
+			System.out.println(lista.get(i));
+		}
     }
 }
